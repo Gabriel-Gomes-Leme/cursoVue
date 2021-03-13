@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" V-on:input="alterarTitulo">
+        <p>
+       {{titulo}}
+        </p>
+    </div>
+
+</body>
+<script>
+    new Vue({
+	el: '#app',
+  data:{
+  	titulo:'Usando Vue js',
+  },
+  methods:{ // métodos que serão executados no momento que acontecer um evento html
+    alterarTitulo(event) {
+        this.titulo=event.target.value
+    }
+  }
+})
+</script>
+</html>

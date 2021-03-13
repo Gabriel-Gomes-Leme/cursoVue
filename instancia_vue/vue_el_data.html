@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{titulo}}
+        <button v-on:click="alterar">Alterar</button>
+    </div>
+</body>
+<script>
+   const vm1= new Vue ({
+        el:'#app', // $el representa o elemento html referenciado apartir da DOM
+        data:{ // $data são dados que passou na construção da instância
+            titulo:'Teste'
+        },
+        methods:{
+            alterar(){
+                this.titulo+='$$$'
+            }
+        }
+    })
+    vm1.titulo='Opa';
+    // se tem 2 instâncias que precisam interagir entre si, é melhor criar uma única que vai agrupar todos os comportamentos
+</script>
+</html>

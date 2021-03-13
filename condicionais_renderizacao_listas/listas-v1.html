@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="cor in cores" :teste="cor">{{cor}}</li>
+        </ul>
+    </div>
+    
+</body>
+<script>
+    new Vue ({
+        el:'#app',
+        data:{
+            cores:['Verde', 'Azul', 'Púrpura', 'Vermelho'],
+            pessoas:[ //lista de objetos do tipo pessoa
+                {nome:'Ana', idade:25, peso:70},
+                {nome:'Gabriel', idade:21, peso:68},
+                {nome:'Marcela', idade:24, peso:67}
+            ]
+        }
+    })
+</script>
+</html>

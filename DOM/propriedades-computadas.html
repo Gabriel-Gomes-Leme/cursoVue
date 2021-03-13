@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>propriedades reativas (two way data binding)</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="aumentar">Aumentar</button>
+        <button v-on:click="contador2++">Aumentar 2</button>
+        <button v-on:click="diminuir">Diminuir</button>
+       <p> Contador: {{contador}} | {{contador2}}</p>
+       <p> Resultado: {{resultado}}</p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            contador:0,
+            contador2:0
+        },
+        computed:{
+            resultado(){
+                return this.contador <=5 ? 'Menor ou igual a 5' : 'Maior ou igual a 5'; // o método computado entende que o contador 2 não tem influencia nenhuma nessa instancia
+            }
+        },
+        watch:{ //monitorando mudanças
+            contador(novo,antigo){
+                console.log(novo, antigo);
+                setTimeout(()=>{ // se usar a function normal, o this não irá funcionar
+                    this.contador=0;
+                }, 2000)
+            }
+
+        },
+        methods:{
+            aumentar(){
+                this.contador+=1;
+            },
+            diminuir(){
+                this.contador-=1;
+            },
+
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        {{descricao}}
+      </p>
+      <h1>{{preco}}</h1>
+      <p>
+        {{saudacao()}}
+      </p>
+    </div>
+
+  </body>
+  <script>
+    new Vue({ // o Vue é o intermediário entre o que escreve no template e o que sera mostrado no browser
+      el:'#app',
+      data:{
+        descricao:'Camisa oficial do Palmeiras (1)',
+        preco: 200.00
+      }, 
+      methods:{
+        saudacao:function(){
+          return 'Seja bem vindo'; // tudo que retorna tem que ser passivel de ser convertido para string
+        }
+      }
+    })
+  </script>
+</html>

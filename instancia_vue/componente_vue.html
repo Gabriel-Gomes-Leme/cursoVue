@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <comp></comp>
+        <comp></comp>
+    </div>
+</body>
+<script>
+    Vue.component('comp',{
+        template:`
+            <div>
+                <h1>{{aula}}</h1>
+                <h2>{{modulo}}</h2>
+                <button @click="alterarAula">Alterar aula</button>
+                <button @click="alterarModulo">Alterar modulo</button>
+            </div>
+        `,
+        data:function(){
+            return{ //cada componente terá o seu próprio estado, sempre que chamar a função, um novo objeto é criado, cada componente tem seus dados independentes um do outro
+                aula:'Montando instância vue',
+                modulo:'Instância do Vue'
+            }
+        },
+        methods:{
+            alterarAula(){
+                this.aula+='#'
+            },
+            alterarModulo(){
+                this.modulo+='$';
+                console.log(this.$ref.aulaRef.innerText)
+            }
+        }
+    }) //registrando um componente de forma global dentro do vue
+   const vm= new Vue ({
+       el:'#app',
+       
+    })
+</script>
+</html>

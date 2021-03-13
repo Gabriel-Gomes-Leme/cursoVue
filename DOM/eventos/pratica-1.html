@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pratica</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="desafio">
+        <button v-on:click="alerta">exibir alerta</button>
+        <div>
+            <input type="text" v-on:keydown="valor=$event.target.value">
+            <p>{{valor}}</p>
+        </div>
+        <div>
+            <input type="text" v-on:keydown.enter="valor=$event.target.value">
+            <p>{{valor}}</p>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'#desafio',
+        data:{
+            valor:'',
+        },
+        methods:{
+            alerta(){
+                alert('Ola mundo');
+            },
+        }
+    })
+</script>
+</html>

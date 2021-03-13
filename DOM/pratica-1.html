@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <!--
+      https://jsfiddle.net/f9h5u4br/3/
+      Diretiva é uma propriedade personalizada não nativa do html (mas o html5 permite), são interpretadas pelo Vue, pode criar as próprias diretivas ou usar as disponibilizadas pelo Vue
+    -->
+    <div id="app">
+      <p> {{nome}}</p>
+      <p> {{idade}}</p>
+      <p>Idade X 3 = {{idade*3}}</p>
+      <p>Idade X 5 = {{idadeX5()}}</p>
+      <p>Numero: {{Math.random()}}</p>
+      <img height="400" v-bind:src="imagem">
+      <input type="text" v-bind:value="nome">
+    </div>
+
+  </body>
+  <script>
+    new Vue({ // o Vue é o intermediário entre o que escreve no template e o que sera mostrado no browser
+      el:'#app',
+      data:{
+        nome:'Gabriel Gomes Leme',
+        idade:21,
+        imagem:'https://http2.mlstatic.com/the-elder-scrolls-v-5-skyrim-special-edition-pc-steam-key-D_NQ_NP_628954-MLB31857522337_082019-F.jpg'
+      },
+      methods:{
+        idadeX5(){
+          return this.idade * 5
+        }
+      }
+    })
+  </script>
+</html>

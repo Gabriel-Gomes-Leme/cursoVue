@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    ul{
+        list-style: none;
+    }
+    h1, p{
+        display: inline;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(cor, i) in cores" :teste="cor" :key="cor"> {{i}})- {{cor}}</li> <!-- i é o índice
+            key serve como uma dica para o Vue para mostrar onde está a identidade do elemento dentro da lista gerada, usa o indice do elemento para saber se teve mudança ou não, o Vue pode rastrear o elemento-->
+        </ul>
+        <button @click="cores.push('Laranja')">Adicionar</button>
+        <hr>
+        <template v-for="(cor, i) in cores">
+            <h1>{{cor}}</h1>
+            <p>{{i}}</p>
+        </template>
+        <ul>
+            <li v-for="pessoa in pessoas">
+                <span v-for="(valor, chave, index) in pessoa">
+                    {{chave}}={{valor}} {{index}}
+                </span>
+            </li>
+        </ul>
+        <hr>
+        <span v-for="n in 10">
+            {{n}}
+        </span>
+    </div>
+    
+</body>
+<script>
+    new Vue ({
+        el:'#app',
+        data:{
+            cores:['Verde', 'Azul', 'Púrpura', 'Vermelho'],
+            pessoas:[ //lista de objetos do tipo pessoa
+                {nome:'Ana', idade:25, peso:70},
+                {nome:'Gabriel', idade:21, peso:68},
+                {nome:'Marcela', idade:24, peso:67}
+            ]
+        }
+
+    })
+</script>
+</html>

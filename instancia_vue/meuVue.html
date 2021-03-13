@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{nome}} {{10-5}} <br>
+        {{Math.pow(2,3)}}
+    </div>
+</body>
+<script>
+    function meuVue(params){
+        this.$el=document.querySelector(params.el);
+        this.$data=params.data;
+
+        for(let atr in this.$data){
+            Object.defineProperty(this, atr, {
+                get:()=>{ // get serve de proxy, apatir desta propriedade, ele retorna outra propriedade.
+                    return this.$data[atr];
+                },
+                set: value =>{
+                    this.$data[atr]=value; //altera o atributo com o valor que foi passado
+                }
+
+            })
+        }
+        //interpolar
+        const regex=/\{\{([\s\w)(,.+-]*)\}\}/g
+        this.$el.innerHTML=this.$el.innerHTML.replace(regex, (match, $1)=>{
+            const value=this[$1.trim()];
+            return value ? value : eval($1)
+        })
+    }
+    const vm = new meuVue({
+        el:'#app',
+        data:{
+            nome:'Gabriel',
+            idade:21
+        }
+    })
+    console.log(vm.nome)
+</script>
+</html>

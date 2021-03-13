@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <!--
+      Diretiva é uma propriedade personalizada não nativa do html (mas o html5 permite), são interpretadas pelo Vue, pode criar as próprias diretivas ou usar as disponibilizadas pelo Vue
+    -->
+    <div id="app">
+      <p v-once><!-- só atualiza uma vez, ele não precisará se preocupar se determinado dado mudar para atualizar posteriormente-->
+        {{descricao}}
+      </p>
+      <p>
+        {{saudacao()}}
+      </p>
+      <a v-bind:href="link">Google</a> <!-- v-bind faz a ligação entre algo que está na instancia do vue e um atributo dentro da sua tag no template-->
+      <hr>
+      <p v-html="linkHtml"> <!-- v-html interpreta o que está dentro da variável como um elemento html e não como texto-->
+      </p>
+    </div>
+
+  </body>
+  <script>
+    new Vue({ // o Vue é o intermediário entre o que escreve no template e o que sera mostrado no browser
+      el:'#app',
+      data:{
+        descricao:'Feijão',
+        link:'http://google.com.br',
+        linkHtml:'<a href="http://google.com.br"> Googleeee </a>'
+      }, 
+      methods:{
+        saudacao:function(){
+          this.descricao='Ola';
+          return this.descricao
+        }
+      }
+    })
+  </script>
+</html>

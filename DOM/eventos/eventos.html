@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Eventos</title>
+  </head>
+  <body>
+    <!--
+      https://jsfiddle.net/f9h5u4br/3/
+      Diretiva é uma propriedade personalizada não nativa do html (mas o html5 permite), são interpretadas pelo Vue, pode criar as próprias diretivas ou usar as disponibilizadas pelo Vue
+    -->
+    <div id="app">
+        <h3>{{contador}}</h3>
+        <button v-on:click="somar">Somar 1</button>
+    </div>
+
+  </body>
+  <script>
+    new Vue({ // o Vue é o intermediário entre o que escreve no template e o que sera mostrado no browser
+        el:'#app',
+        data:{
+            contador:0
+        },
+        methods:{
+            somar(event){
+              console.log(event);
+                this.contador++;
+            }
+        }
+    })
+  </script>
+</html>

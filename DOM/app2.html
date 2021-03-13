@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        {{titulo}}
+      </p>
+    </div>
+
+  </body>
+  <script>
+    new Vue({ // o Vue é o intermediário entre o que escreve no template e o que sera mostrado no browser
+      el:'#app',
+      data:{
+        titulo:'Palmeiras o maior time do Brasil'
+      }
+    })
+  </script>
+</html>

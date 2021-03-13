@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 ref="aulaRef">{{aula}}</h1>
+        <h2>{{modulo}}</h2>
+        <button @click="alterarAula">Alterar aula</button>
+        <button @click="alterarModulo">Alterar modulo</button>
+    </div>
+</body>
+<script>
+   const vm= new Vue ({
+        el:'#app', // $el representa o elemento html referenciado apartir da DOM
+        data:{ // $data são dados que passou na construção da instância
+            aula:'Aula usando refs',
+            modulo:'Instância do Vue'
+        },
+        methods:{
+            alterarAula(){
+                this.aula+='#'
+            },
+            alterarModulo(){
+                this.modulo+='$';
+                console.log(this.$ref.aulaRef.innerText)
+            }
+        }
+    })
+    vm.$refs.aulaRef.innerText='Alterando diretamente'; // não é o ideal fazer assim
+    // se tem 2 instâncias que precisam interagir entre si, é melhor criar uma única que vai agrupar todos os comportamentos
+</script>
+</html>

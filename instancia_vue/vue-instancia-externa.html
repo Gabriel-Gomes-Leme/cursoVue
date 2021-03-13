@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{titulo}} 
+        <button v-on:click="alterar">Alterar</button>
+    </div>
+    <div id="app2">
+        {{titulo2}} 
+        <button v-on:click="alterar">Alterar</button>
+    </div>
+</body>
+<script>
+   const vm1= new Vue ({
+        el:'#app',
+        data:{
+            titulo:'Teste2'
+        },
+        methods:{
+            alterar(){
+                vm2.titulo2+='$$$'
+            }
+        }
+    })
+    const vm2=new Vue ({
+        el:'#app2',
+        data:{
+            titulo2:'Teste2'
+        },
+        methods:{
+            alterar(){
+                vm1.titulo+='##'
+            }
+        }
+    })
+    setTimeout(()=>{
+        vm1.titulo='Vai Palmeiraas';
+    }, 3000)
+
+    // se tem 2 instâncias que precisam interagir entre si, é melhor criar uma única que vai agrupar todos os comportamentos
+</script>
+</html>
